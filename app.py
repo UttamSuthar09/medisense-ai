@@ -280,11 +280,12 @@ with st.sidebar:
     st.markdown("### MediSense AI")
     st.markdown("---")
     st.markdown("**Knowledge Base**")
-    if rag_collection:
-        st.success(f"✓ {rag_collection.count()} medical chunks loaded")
+    # REPLACE with this:
+    if rag_collection is not None:
+        st.success(f"✓ {len(rag_collection['documents'])} medical chunks loaded")
         st.caption("Sources: WHO Fact Sheets, Clinical Guidelines")
     else:
-        st.warning("RAG not loaded")
+        st.warning("RAG not available")
     st.markdown("---")
     st.warning("⚠️ Not a substitute for professional medical advice.")
 st.caption("AI-powered symptom checker | For educational purposes only — not a medical diagnosis")
