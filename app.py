@@ -22,19 +22,33 @@ st.set_page_config(
 # ── Load artifacts ────────────────────────────────────────
 @st.cache_resource
 def load_artifacts():
-    with open('medisense_preprocessed.pkl', 'rb') as f:
+    from xgboost import XGBClassifier
+
+    # Load slim metadata
+    with open('medisense_deploy.pkl', 'rb') as f:
         data = pickle.load(f)
+
+    # Load XGBoost model separately
+    xgb = XGBClassifier()
+    xgb.load_model('xgb_model_lite.json')
+    data['xgb_model'] = xgb
+
+    # Load NLP artifacts
     with open('nlp_artifacts.pkl', 'rb') as f:
         nlp = pickle.load(f)
+
     return data, nlp
 
 data, nlp_data = load_artifacts()
-xgb            = data['xgb_model']
-le             = data['label_encoder']
-feature_names  = data['feature_names']
-symptom_lookup = nlp_data['symptom_lookup']
-symptom_phrases= nlp_data['symptom_phrases']
-SYNONYMS       = nlp_data['synonyms']
+
+# These are the only variables app.py actually needs at runtime
+xgb           = data['xgb_model']
+le            = data['label_encoder']
+feature_names = data['feature_names']
+disease_names = data['disease_names']
+symptom_lookup  = nlp_data['symptom_lookup']
+symptom_phrases = nlp_data['symptom_phrases']
+SYNONYMS        = nlp_data['synonyms']
 GENERIC_SYMPTOMS = {'feeling ill', 'fatigue', 'weakness', 'ache all over'}
 
 @st.cache_resource
