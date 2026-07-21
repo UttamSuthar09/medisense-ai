@@ -2,7 +2,6 @@ import streamlit as st
 import pickle
 import numpy as np
 import re
-import ollama
 from fuzzywuzzy import fuzz, process
 import chromadb
 from chromadb.utils import embedding_functions
