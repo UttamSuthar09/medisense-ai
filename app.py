@@ -3,8 +3,6 @@ import pickle
 import numpy as np
 import re
 from fuzzywuzzy import fuzz, process
-import chromadb
-from chromadb.utils import embedding_functions
 from groq import Groq
 import os
 import streamlit as st
