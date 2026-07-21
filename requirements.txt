@@ -1,0 +1,9 @@
+streamlit
+groq
+sentence-transformers
+scikit-learn
+xgboost
+fuzzywuzzy
+python-Levenshtein
+numpy
+pandas
