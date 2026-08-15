@@ -190,7 +190,7 @@ def llm_chat(messages, system_prompt=None):
     if system_prompt:
         messages = [{"role": "system", "content": system_prompt}] + messages
     response = groq_client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model="openai/gpt-oss-20b",
         messages=messages,
         max_tokens=512,
         temperature=0.3,
