@@ -1,0 +1,6 @@
+chroma_db/
+medical_docs/
+.streamlit/secrets.toml
+__pycache__/
+*.pyc
+.env
