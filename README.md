@@ -1,22 +1,27 @@
 # 🏥 MediSense AI
+
 ### AI-Powered Healthcare Diagnosis Assistant
+
 **CDAC BDA Major Project | Feb 2026 Batch | SIIT Pune**
 **Uttam Suthar & Tushar Bhute**
 
 ---
 
 ## 🔗 Live Demo
+
 **App:** https://medisense-aichat.streamlit.app  
-**Tableau Dashboard:** https://public.tableau.com/views/ML-project_17846536081640  
+**Tableau Dashboard:** https://public.tableau.com/app/profile/uttam.suthar1718/viz/ML-project_17846536081640/Dashboard1
 
 ---
 
 ## 📌 Project Overview
+
 MediSense AI is an end-to-end AI-powered healthcare diagnosis assistant that accepts patient symptom descriptions in plain English and returns a differential diagnosis across 677 diseases, grounded in WHO medical literature.
 
 ---
 
 ## 🏗️ System Architecture
+
 User Input (Streamlit)
 ↓
 Security Layer (Sanitization + Topic Guard)
@@ -34,40 +39,44 @@ Patient Report (English / Hindi / Marathi)
 ---
 
 ## 📊 Dataset
-| Attribute | Value |
-|---|---|
-| Source | Kaggle — dhivyeshrk/diseases-and-symptoms-dataset |
-| Total Records | 246,945 |
-| Diseases | 773 (677 after filtering) |
-| Symptom Features | 377 (146 after VarianceThreshold) |
-| Missing Values | 0 |
+
+| Attribute        | Value                                             |
+| ---------------- | ------------------------------------------------- |
+| Source           | Kaggle — dhivyeshrk/diseases-and-symptoms-dataset |
+| Total Records    | 246,945                                           |
+| Diseases         | 773 (677 after filtering)                         |
+| Symptom Features | 377 (146 after VarianceThreshold)                 |
+| Missing Values   | 0                                                 |
 
 ---
 
 ## 🤖 Model Performance
-| Model | Test Accuracy | F1 Score | Model Size |
-|---|---|---|---|
-| Random Forest | 64.27% | 64.27% | ~1.1 GB |
-| **XGBoost (selected)** | **73.79%** | **73.79%** | **39.9 MB** |
+
+| Model                  | Test Accuracy | F1 Score   | Model Size  |
+| ---------------------- | ------------- | ---------- | ----------- |
+| Random Forest          | 64.27%        | 64.27%     | ~1.1 GB     |
+| **XGBoost (selected)** | **73.79%**    | **73.79%** | **39.9 MB** |
 
 ---
 
 ## 🛠️ Tech Stack
-| Layer | Technology |
-|---|---|
-| ML Model | XGBoost (n=50, depth=5, hist method) |
-| NLP | FuzzyWuzzy + Custom Synonym Dictionary |
-| GenAI | Llama 3.1 8B via Groq API |
-| RAG | Sentence Transformers + Cosine Similarity |
-| Knowledge Base | 9 WHO PDFs → 1,174 chunks |
-| Security | Regex sanitization + Topic guard + Prompt constraints |
-| Frontend | Streamlit |
-| Deployment | Streamlit Cloud |
-| Analytics | Tableau Public |
+
+| Layer          | Technology                                            |
+| -------------- | ----------------------------------------------------- |
+| ML Model       | XGBoost (n=50, depth=5, hist method)                  |
+| NLP            | FuzzyWuzzy + Custom Synonym Dictionary                |
+| GenAI          | Llama 3.1 8B via Groq API                             |
+| RAG            | Sentence Transformers + Cosine Similarity             |
+| Knowledge Base | 9 WHO PDFs → 1,174 chunks                             |
+| Security       | Regex sanitization + Topic guard + Prompt constraints |
+| Frontend       | Streamlit                                             |
+| Deployment     | Streamlit Cloud                                       |
+| Analytics      | Tableau Public                                        |
 
 ---
 
 ## 📁 Repository Structure
+
 medisense-ai/
 ├── app.py # Complete Streamlit application
 ├── xgb_model_lite.json # XGBoost model (39.9 MB, 677 classes)
@@ -78,10 +87,10 @@ medisense-ai/
 ├── Notebooks/ # Jupyter notebooks (EDA, training)
 └── README.md
 
-
 ---
 
 ## ⚙️ Local Setup
+
 ```bash
 git clone https://github.com/UttamSuthar09/medisense-ai.git
 cd medisense-ai
@@ -97,6 +106,7 @@ streamlit run app.py
 ---
 
 ## 🔒 Security Features
+
 - **Layer 1:** Regex-based prompt injection sanitization (15+ patterns)
 - **Layer 2:** Topic guard — blocks non-medical queries before LLM call
 - **Layer 3:** System prompt constraints — LLM instructed to refuse off-topic requests
@@ -104,6 +114,7 @@ streamlit run app.py
 ---
 
 ## 📈 Key Numbers
+
 - **246,945** training records
 - **677** disease classes
 - **146** symptom features (after variance filtering)
@@ -115,4 +126,5 @@ streamlit run app.py
 ---
 
 ## ⚠️ Disclaimer
+
 MediSense AI is a screening tool only. It is not a substitute for professional medical advice. Always consult a qualified healthcare professional.
